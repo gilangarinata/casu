@@ -78,7 +78,7 @@
                     <div class="navbar">
                         <div class="navbar-inner">
                             <div class="title sliding">
-                                <img src="ico/halocode.png" height="40" width="50">
+                                <img src="images/casu.png" height="40" width="80">
                             </div>
                             <div class="right">
                                 <a id="toadmin" class="external link icon-only " data-panel="right">
@@ -878,7 +878,7 @@
         var base_url = "http://susumaktam.com/"
             // var base_url = "http://localhost/"
 
-        var api = base_url + "maktam_api_new/api/pendapatan/";
+        var api = base_url + "casu_api/api/pendapatan/";
 
 
         var count = 0;
@@ -1247,8 +1247,8 @@
         }
 
         //==========================PENJUALAN===============================================================
-        var api_penjualan = base_url + "maktam_api_new/api/penjualan/";
-        var api_cup_besar = base_url + "maktam_api_new/";
+        var api_penjualan = base_url + "casu_api/api/penjualan/";
+        var api_cup_besar = base_url + "casu_api/";
         var id = 1;
         var id2 = 1;
         var total_penjualan = 0;
@@ -1512,7 +1512,7 @@
         function select_bumbu_outlet(tanggal) {
             $.ajax({
                 type: "POST",
-                url: base_url + "maktam_api_new/bumbu.php",
+                url: base_url + "casu_api/bumbu.php",
                 data: ({
                     outlet: outlet,
                     tanggal: tanggal
@@ -1550,7 +1550,7 @@
         function select_bumbu_all() {
             $.ajax({
                 type: "POST",
-                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                url: base_url + "casu_api/get_bumbu_all.php",
                 data: ({
                     outlet: outlet
                 }),
@@ -1572,7 +1572,7 @@
             console.log("tan" + tanggal)
             $.ajax({
                 type: "POST",
-                url: base_url + "maktam_api_new/delete_bumbu_outlet.php",
+                url: base_url + "casu_api/delete_bumbu_outlet.php",
                 data: ({
                     tanggal: tanggal,
                     outlet: outlet
@@ -1597,7 +1597,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: base_url + "maktam_api_new/post_bumbu.php",
+                    url: base_url + "casu_api/post_bumbu.php",
                     data: ({
                         tanggal: tanggal,
                         bumbu: bumbu,
@@ -1658,7 +1658,7 @@
             console.log(date + outlet)
             $.ajax({
                 type: "POST",
-                url: base_url + "maktam_api_new/get_cup_besar_by_outlet.php",
+                url: base_url + "casu_api/get_cup_besar_by_outlet.php",
                 cache: false,
                 data: {
                     tanggal: date,
@@ -1760,7 +1760,7 @@
             console.log("tan" + tanggal)
             $.ajax({
                 type: "POST",
-                url: base_url + "maktam_api_new/delete_cup_besar.php",
+                url: base_url + "casu_api/delete_cup_besar.php",
                 data: ({
                     tanggal: tanggal,
                     outlet: outlet
@@ -1805,7 +1805,7 @@
         });
 
         //============================================MATERIAL===========================================================
-        var api_material = base_url + "maktam_api_new/api/material/";
+        var api_material = base_url + "casu_api/api/material/";
         var mode3 = 0;
         var idx3 = 0;
         var count_material = 0;
@@ -2051,7 +2051,7 @@
         });
 
         //==================================PRODUK LAIN ===========================================
-        var api_produk = base_url + "maktam_api_new/api/produk/";
+        var api_produk = base_url + "casu_api/api/produk/";
         var count_rasa = [];
         var count_produk = 0;
         var mode4 = 0;

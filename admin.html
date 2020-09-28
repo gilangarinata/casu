@@ -90,7 +90,7 @@
                     <div class="navbar">
                         <div class="navbar-inner">
                             <div class="title sliding">
-                                <img src="ico/halocode.png" height="40" width="50">
+                                <img src="images/casu.png" height="40" width="80">
                             </div>
 
 
@@ -1092,7 +1092,7 @@
                         var base_url = "http://susumaktam.com/"
 
                         // var base_url = "http://localhost/"
-                        var api_admin = base_url + "maktam_api_new/api/admin/";
+                        var api_admin = base_url + "casu_api/api/admin/";
 
                         var usersk;
                         setGudang()
@@ -1123,7 +1123,7 @@
                         function select_bumbu_all() {
                             $.ajax({
                                 type: "POST",
-                                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                                url: base_url + "casu_api/get_bumbu_all.php",
                                 cache: false,
                                 success: function(data) {
                                     arrBumbu = data.result;
@@ -1246,7 +1246,7 @@
                                 data: ({
                                     tanggal: tanggal
                                 }),
-                                url: base_url + "maktam_api_new/bumbu_date.php",
+                                url: base_url + "casu_api/bumbu_date.php",
                                 cache: false,
                                 success: function(data) {
                                     var tbs = 0;
@@ -1303,7 +1303,7 @@
                         function selectOutletAll() {
                             $.ajax({
                                 type: "GET",
-                                url: base_url + "maktam_api_new/get_outlet_all.php",
+                                url: base_url + "casu_api/get_outlet_all.php",
                                 cache: false,
                                 success: function(data) {
                                     var i = 0;
@@ -1323,7 +1323,7 @@
                         function selectCupBesarAll() {
                             $.ajax({
                                 type: "POST",
-                                url: base_url + "maktam_api_new/get_cup_besar_all.php",
+                                url: base_url + "casu_api/get_cup_besar_all.php",
                                 cache: false,
                                 data: {
                                     tanggal: tanggal
@@ -3447,7 +3447,7 @@
                             var bumbu = $("#bumbu").val();
                             $.ajax({
                                 type: "POST",
-                                url: base_url + "maktam_api_new/add_bumbu.php",
+                                url: base_url + "casu_api/add_bumbu.php",
                                 data: ({
                                     bumbu: bumbu
                                 }),
@@ -3463,7 +3463,7 @@
                         function show_bumbu() {
                             $.ajax({
                                 type: "POST",
-                                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                                url: base_url + "casu_api/get_bumbu_all.php",
                                 cache: false,
                                 success: function(data) {
                                     var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Material</b></th> </tr> </thead> <tbody>";
@@ -3485,7 +3485,7 @@
                             app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + "maktam_api_new/delete_bumbu.php",
+                                    url: base_url + "casu_api/delete_bumbu.php",
                                     data: ({
                                         id: id
                                     }),
