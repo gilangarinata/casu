@@ -243,7 +243,7 @@
                                                 <td><b>Total Susu Datang Semua Outlet</b></td>
                                                 <td><input id="total_susu_datang" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
                                             </tr>
-                                            <tr>
+                                            <tr style="display: none;">
                                                 <td><b>Total Sisa Kemarin Mentah Semua Outlet</b></td>
                                                 <td><input id="total_sisa_kemarin_mentah" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
                                             </tr>
@@ -255,7 +255,7 @@
                                                 <td><b>Total Sisa Matang Semua Outlet</b></td>
                                                 <td><input id="total_sisa_matang" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
                                             </tr>
-                                            <tr>
+                                            <tr style="display: none;">
                                                 <td><b>Total Sisa Mentah Semua Outlet</b></td>
                                                 <td><input id="total_sisa_mentah" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
                                             </tr>
@@ -280,7 +280,7 @@
 
 
 
-                                <div class="data-table data-table-init card">
+                                <div style="display: none;" class="data-table data-table-init card">
                                     <table>
                                         <tbody>
                                             <tr>
@@ -328,7 +328,7 @@
                                 </div>
 
 
-                                <div class="data-table data-table-init card">
+                                <div style="display: none;" class="data-table data-table-init card">
                                     <table>
                                         <tbody>
                                             <tr>
@@ -1121,6 +1121,7 @@
 
 
                         function select_bumbu_all() {
+                            console.log("gilag");
                             $.ajax({
                                 type: "POST",
                                 url: base_url + "casu_api/get_bumbu_all.php",
@@ -1128,7 +1129,7 @@
                                 success: function(data) {
                                     arrBumbu = data.result;
 
-                                    var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Bumbu</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Original</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cappucino</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Coklat</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Oreo</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
+                                    var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Cup</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Cup Biru</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cup Hitam</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Cup Hijau</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Cup Pucoksu</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
                                     var result = data.result;
                                     bumbu = data.result;
                                     $.each(result, function(key, value) {
@@ -1138,6 +1139,8 @@
                                     $("#bumbu_tabel").html(string);
                                 }
                             });
+
+
                         }
 
 
@@ -2061,8 +2064,8 @@
                                     string3 += "</tr> </thead> <tbody>";
 
 
-                                    var stock_susu = ["Susu Datang", "Susu Kemarin Mentah", "Sisa Kemarin Matang", "Sisa Matang", "Sisa Mentah", "Stock Dari", "Stock Diambil", "Total"];
-                                    var stock_bumbu = ["Original", "Cappucino", "Coklat", "Oreo", "Total"];
+                                    var stock_susu = ["Susu Datang", "Sisa Kemarin Matang", "Sisa Matang", "Stock Dari", "Stock Diambil", "Total"];
+                                    var stock_bumbu = ["Cup Biru", "Cup Hitam", "Cup Hijau", "Cup Pucoksu", "Total"];
                                     var stock_cupss = ["Stock", "Terjual", "Sisa"];
 
                                     for (var i = 0; i < stock_susu.length; i++) {
