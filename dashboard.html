@@ -1323,7 +1323,7 @@
                 diambil = diambil + Number(diambil_dari_stock[i]);
             }
 
-            total_penjualan = Number($("#susu-datang").val()) + Number($("#sisa-kemarin-mentah").val()) + Number($("#sisa-kemarin-matang").val()) + Number($("#sisa-matang").val()) + Number($("#sisa-mentah").val()) + Number(stock) + Number(diambil);
+            total_penjualan = Number($("#susu-datang").val()) + Number($("#sisa-kemarin-mentah").val()) + Number($("#sisa-kemarin-matang").val()) - Number($("#sisa-matang").val()) + Number($("#sisa-mentah").val()) + Number(stock) + Number(diambil);
             $("#total-penjualan").val(total_penjualan);
 
             $("#original4").val(Number($("#original0").val()) - Number($("#original2").val()));
