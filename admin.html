@@ -1631,7 +1631,7 @@
 
 
                         $("#print").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_pendapatan.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_pendapatan.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
@@ -1639,43 +1639,43 @@
 
 
                         $("#print_penjualan").click(function() {
-                            var api_print_penjualan = "http://susumaktam.com/api/print_penjualan.php?tanggal=" + tanggal;
+                            var api_print_penjualan = "http://susumaktam.com/casu_api/api/print_penjualan.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_penjualan;
                         });
 
                         $("#print_stock").click(function() {
-                            var api_print_stock = "http://susumaktam.com/api/print_stock.php?tanggal=" + tanggal;
+                            var api_print_stock = "http://susumaktam.com/casu_api/api/print_stock.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_stock;
                         });
 
                         $("#print_bumbu").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_stock_bumbu.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_stock_bumbu.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
 
                         $("#print_stock_cup").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_stock_cup.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_stock_cup.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
 
                         $("#print_material").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_material.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_material.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
 
                         $("#print_gudang").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_gudang.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_gudang.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
 
                         $("#print_lain").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_produk_lain.php?tanggal=" + tanggal;
+                            var api_print_pendapatan = "http://susumaktam.com/casu_api/api/print_produk_lain.php?tanggal=" + tanggal;
 
                             window.location.href = api_print_pendapatan;
                         });
@@ -2658,10 +2658,11 @@
 
                             $.ajax({
                                 type: "GET",
-                                url: "http://susumaktam.com/maktam2/maktam/maktam/api/admin/cron.php",
+                                url: "http://susumaktam.com/maktam2/maktam/maktam/api/admin/cron.php?tanggal=" + tanggal,
                                 cache: false,
                                 success: function(html) {
-
+                                    console.log("http://susumaktam.com/maktam2/maktam/maktam/api/admin/cron.php?tanggal=" + tanggal)
+                                    console.log(html)
                                 }
                             });
                         });
