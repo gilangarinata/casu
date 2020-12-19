@@ -1121,7 +1121,6 @@
 
 
                         function select_bumbu_all() {
-                            console.log("gilag");
                             $.ajax({
                                 type: "POST",
                                 url: base_url + "casu_api/get_bumbu_all.php",
@@ -1190,6 +1189,7 @@
                         var id_pgd = 0;
                         var materialLength = 0;
                         var material = [];
+                        var iDate = 1;
 
                         $("#tanggalStd").val(tgl[1]);
                         $("#tanggal").val(tgl[0]);
@@ -2584,6 +2584,11 @@
                                         stock = [];
                                     }
 
+                                    if (stock.length === 0) {
+                                        iDate = 1;
+                                        getStock(tanggal);
+                                    }
+
                                     var diambilOutlet = [];
                                     var sisaBarang = [];
                                     materialLength = material.length;
@@ -2597,11 +2602,63 @@
                                         string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
                                     }
 
+                                    setTimeout(function() {
+                                        for (var i = 0; i < material.length; i++) {
+                                            var sisa = Number($("#stockGudang" + i).html()) - Number($("#diambilOutlet" + i).html());
+
+                                            console.log(sisa + "gg")
+                                            $("#sisaGudang" + i).html(sisa)
+                                        }
+
+                                    }, 5000);
+
+
 
                                     $("#record-laporan-gudang").html(string);
                                 }
                             });
                         }
+
+                        function getStock(date) {
+                            var st = date;
+                            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+                            var dt = new Date(st.replace(pattern, '$3-$2-$1'));
+                            var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
+                            date = yesterday.getDate() + "/" + (yesterday.getMonth() + 1) + "/" + yesterday.getFullYear()
+                            $.ajax({
+                                type: "GET",
+                                data: ({
+                                    tanggal: date
+                                }),
+                                url: base_url + "maktam_api_new/get_stock.php?tanggal=" + date,
+                                cache: false,
+                                success: function(data) {
+                                    var result = data.result;
+                                    if (data.num === 0) {
+                                        iDate++;
+                                        getStock(st);
+                                    } else {
+                                        $.each(result, function(key, value) {
+                                            var stock = value['stock'];
+                                            var sisa = value['sisa'];
+                                            var tanggal = value['date'];
+
+                                            var sisas = JSON.parse(sisa);
+
+                                            for (var i = 0; i < sisas.length; i++) {
+                                                //gilang
+                                                $("#stockGudang" + i).html(sisas[i]);
+                                                var sisa = sisas[i] - Number($("#diambilOutlet" + i).html);
+                                                $("#sisaBarang" + i).html(sisa)
+                                            }
+
+
+                                        });
+                                    }
+                                }
+                            });
+                        }
+
 
                         $("#submitGudang").click(function() {
                             var inputGudang = [];
