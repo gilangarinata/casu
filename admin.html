@@ -2599,7 +2599,10 @@
                                             diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7 + materialLength + i]);
                                         }
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
-                                        string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
+
+                                        if (material[i] != '0') {
+                                            string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
+                                        }
                                     }
 
                                     setTimeout(function() {
@@ -2624,7 +2627,9 @@
                             var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
                             var dt = new Date(st.replace(pattern, '$3-$2-$1'));
                             var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
-                            date = yesterday.getDate() + "/" + (yesterday.getMonth() + 1) + "/" + yesterday.getFullYear()
+                            date = ('0' + yesterday.getDate()).slice(-2) + "/" + ('0' + (yesterday.getMonth() + 1)).slice(-2) + "/" + yesterday.getFullYear()
+                            console.log("d" + date)
+
                             $.ajax({
                                 type: "GET",
                                 data: ({
@@ -3347,8 +3352,10 @@
                                     var result = $.parseJSON(data);
                                     var dataProduk = [];
                                     $.each(result, function(key, value) {
-                                        string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['material'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
-                                        string2 += " <tr> <td> " + value['material'] + "</td> <td><input id='material" + panjangMaterial + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number' placeholder=''></td> </tr>";
+                                        if (value['material'] != '0') {
+                                            string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['material'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                                            string2 += " <tr> <td> " + value['material'] + "</td> <td><input id='material" + panjangMaterial + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number' placeholder=''></td> </tr>";
+                                        }
                                         panjangMaterial++;
                                     });
                                     string += "</tbody></table>";
