@@ -2579,6 +2579,7 @@
                                     var dts = JSON.parse(data);
                                     material = JSON.parse(dts['material']);
                                     var value = JSON.parse(dts['data']);
+                                    var id = JSON.parse(dts['id']);
                                     try {
                                         var stock = JSON.parse(dts['stock']);
                                     } catch (err) {
@@ -2587,7 +2588,7 @@
 
                                     if (stock.length === 0) {
                                         iDate = 1;
-                                        getStock(tanggal);
+                                        getStock(id);
                                     }
 
                                     var diambilOutlet = [];
