@@ -2625,12 +2625,12 @@
                         }
 
                         function getStock(date) {
-                            var st = date;
-                            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-                            var dt = new Date(st.replace(pattern, '$3-$2-$1'));
-                            var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
-                            date = ('0' + yesterday.getDate()).slice(-2) + "/" + ('0' + (yesterday.getMonth() + 1)).slice(-2) + "/" + yesterday.getFullYear()
-                            console.log("d" + date)
+                            // var st = date;
+                            // var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+                            // var dt = new Date(st.replace(pattern, '$3-$2-$1'));
+                            // var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
+                            // date = ('0' + yesterday.getDate()).slice(-2) + "/" + ('0' + (yesterday.getMonth() + 1)).slice(-2) + "/" + yesterday.getFullYear()
+                            // console.log("d" + date)
 
                             $.ajax({
                                 type: "GET",
